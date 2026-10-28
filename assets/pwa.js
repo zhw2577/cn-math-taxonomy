@@ -76,13 +76,18 @@
     refreshFooter();
   }
 
+  /* 引导图里显示的站点地址：取当前访问地址，部署到自己的服务器后显示自己的。 */
+  var siteHost = (function () {
+    try { return (location.host || '知识图谱'); } catch (e) { return '知识图谱'; }
+  })();
+
   /* 引导图：纯 SVG，颜色走站点变量，深浅色都能看清 */
   var SVG_OPEN = '<svg class="pwa-pic" viewBox="0 0 300 100" role="img" aria-hidden="true" focusable="false">';
   var PICS = [
     SVG_OPEN +
       '<rect x="6" y="6" width="288" height="88" rx="14" class="pic-bg"/>' +
       '<rect x="24" y="16" width="252" height="22" rx="11" class="pic-field"/>' +
-      '<text x="150" y="31" text-anchor="middle" class="pic-txt" font-size="11.5">math.pansgo.com</text>' +
+      '<text x="150" y="31" text-anchor="middle" class="pic-txt" font-size="11.5">' + siteHost + '</text>' +
       '<circle cx="150" cy="68" r="19" class="pic-hit"/>' +
       '<g class="pic-line" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">' +
         '<path d="M46 60l-8 8 8 8"/><path d="M96 60l8 8-8 8"/>' +
@@ -113,7 +118,7 @@
       '<path d="M32 74h6q4 0 4-4v-4q0-3 3-3h4" class="pic-icon-line" fill="none" stroke-width="3" stroke-linecap="round"/>' +
       '<rect x="72" y="46" width="206" height="26" rx="8" class="pic-field"/>' +
       '<text x="82" y="63.5" class="pic-txt" font-size="13">知识图谱</text>' +
-      '<text x="72" y="84" class="pic-muted" font-size="10.5">math.pansgo.com</text>' +
+      '<text x="72" y="84" class="pic-muted" font-size="10.5">' + siteHost + '</text>' +
     '</svg>'
   ];
 
